@@ -8,20 +8,8 @@ class Test extends Component {
         super();
 
         this.state = {
-            avengers: [
-                {
-                    name: 'Humans',
-                    id: 'human'
-                },
-                {
-                    name: 'Gods',
-                    id: 'god'
-                },
-                {
-                    name: 'Eternals',
-                    id: 'eternal'
-                }
-            ]
+            avengers: [ ],
+            searchField: ''
         };
 
     }
@@ -33,15 +21,13 @@ class Test extends Component {
     }
 
     render() {
+        const { avengers, searchField } = this.state;
+        const filteredAvengers = avengers.filter(avenger => avenger.name.toLowerCase().includes(searchField.toLowerCase()))
         return (
             <div className="App">
-                <CardList>
-                    {this.state.avengers.map(avenger => (
-                        <h1 key={avenger.id}> { avenger.name}</h1>
-                        ))
-                    }
+                <input type="search" placeholder="Search Avengers" onChange={e => this.setState({ searchField: e.target.value})}></input>
+                <CardList avengers={filteredAvengers}>
                 </CardList>
-                
             </div>
         );
     }
