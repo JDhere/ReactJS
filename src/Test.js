@@ -30,6 +30,7 @@ class Test extends Component {
         const filteredAvengers = avengers.filter(avenger => avenger.name.toLowerCase().includes(searchField.toLowerCase()))
         return (
             <div className="App">
+                <h4>Avengers</h4>
                 {/* <input type="search" placeholder="Search Avengers" onChange={e => this.setState({ searchField: e.target.value})}></input> */}
                 <SearchBox
                     placeholder='search here'
